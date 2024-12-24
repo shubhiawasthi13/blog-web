@@ -1,0 +1,38 @@
+{% extends "blog_app/base.html" %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-0 d-flex justify-content-between mx-md-5">
+    <a href="home">
+      <img src="{% static "images/logo.png" %}" alt="logo" width="80px" height="80px" class="navbar-brand mx-5">
+    </a>
+          <ul class="navbar-nav">
+              <form action="" method = "post">
+                  {% csrf_token %}
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle btn btn-dark text-white mx-md-5" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Profile
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="newpost">New Post</a></li>
+                        <li><a class="dropdown-item" href="mypost">My Post</a></li>
+                        <li><a class="dropdown-item" href="logout">Logout</a></li>
+                      </ul>
+                    </li>
+              </form>
+            </ul>
+  </nav>
+
+    <div class="container-fluid mt-4">
+      <h3>My Post</h3>
+      {% for post in posts %}
+      <div class="card mb-3">
+          <h5 class="card-header">{{post.author}}</h5>
+          <p class="card-header">{{post.date_posted}}</p>
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.content}}</p>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

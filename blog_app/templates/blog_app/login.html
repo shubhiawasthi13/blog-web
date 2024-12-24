@@ -1,0 +1,33 @@
+{% extends "blog_app/base.html" %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <br><br>
+            <div class="card my-2">
+                <form action="" class="card-body card-body-color p-lg-3" method="post">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <img src="{% static 'images/logo.png'%}" alt="logo" class="img-fluid profile-image-pic rounded-circle my-3 img-thumbnail" width="90px">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="name" name="uname">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="password" name="upassword">
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-dark px-5 mb-5 w-100" value="login">Login</button>
+                    </div>
+
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">Not Registered? <a href="/" class="text-dark fb-bold">Create an Account</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
